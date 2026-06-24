@@ -1,5 +1,7 @@
 # 🌐 Dashboard Económico Global
 
+**[▶ Ver demo en vivo](https://sneider4.github.io/economic-dashboard/)**
+
 Panel interactivo de indicadores económicos mundiales con datos en tiempo real, construido con Angular 21 y Chart.js.
 
 ![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=flat&logo=angular&logoColor=white)
