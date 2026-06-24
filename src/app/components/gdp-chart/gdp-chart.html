@@ -1,0 +1,26 @@
+<div class="chart-card h-100">
+  <div class="chart-card-header mb-3">
+    <div>
+      <h6 class="chart-title mb-0">Crecimiento del PIB <span class="fw-normal text-secondary">(% anual)</span></h6>
+      <small class="text-secondary">Banco Mundial · Últimos 20 años · 6 economías</small>
+    </div>
+  </div>
+
+  <div class="chart-wrapper">
+    <canvas #gdpCanvas [class.invisible]="loading || error"></canvas>
+
+    @if (loading) {
+      <div class="chart-overlay">
+        <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+      </div>
+    }
+
+    @if (error && !loading) {
+      <div class="chart-overlay">
+        <span class="text-danger small">
+          <i class="bi bi-exclamation-triangle me-1"></i>Error al cargar datos
+        </span>
+      </div>
+    }
+  </div>
+</div>

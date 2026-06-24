@@ -1,0 +1,54 @@
+* { box-sizing: border-box; }
+
+body {
+  background-color: #0f172a;
+  color: #f1f5f9;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+a { color: #64748b; text-decoration: none; }
+a:hover { color: #94a3b8; }
+
+.chart-card {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chart-title {
+  color: #f1f5f9;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 280px;
+}
+
+.chart-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1e293b;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.currency-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

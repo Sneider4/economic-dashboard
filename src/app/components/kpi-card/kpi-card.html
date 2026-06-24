@@ -1,0 +1,25 @@
+<div class="kpi-card h-100">
+  <div class="d-flex align-items-center gap-3">
+    <div class="kpi-icon" [style.background]="accent + '25'" [style.color]="accent">
+      <i [class]="'bi ' + icon"></i>
+    </div>
+    <div class="flex-grow-1 overflow-hidden">
+      <div class="kpi-label">{{ label }}</div>
+
+      @if (!loading) {
+        <div class="kpi-value">
+          {{ formattedValue }}
+          @if (value !== null) {
+            <span class="kpi-unit">&nbsp;{{ unit }}</span>
+          }
+        </div>
+        @if (subtitle) {
+          <div class="kpi-subtitle">{{ subtitle }}</div>
+        }
+      } @else {
+        <div class="skeleton-bar"></div>
+        <div class="skeleton-bar short mt-1"></div>
+      }
+    </div>
+  </div>
+</div>

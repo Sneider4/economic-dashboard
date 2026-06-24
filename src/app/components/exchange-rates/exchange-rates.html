@@ -1,0 +1,55 @@
+<div class="chart-card h-100">
+  <div class="chart-card-header mb-3">
+    <div>
+      <h6 class="chart-title mb-0">Tasas de Cambio</h6>
+      @if (lastUpdate) {
+        <small class="text-secondary">Actualizado: {{ lastUpdate }}</small>
+      }
+    </div>
+    <i class="bi bi-currency-exchange text-secondary fs-5"></i>
+  </div>
+
+  @if (!loading && !error) {
+    <!-- USD/COP destacado -->
+    <div class="cop-highlight mb-3 p-3 rounded-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="text-secondary" style="font-size: 0.75rem;">🇺🇸 1 USD =</div>
+          <div class="fw-bold fs-3 text-primary">{{ copRate | number:'1.0-0' }}</div>
+          <div class="text-secondary" style="font-size: 0.72rem;">pesos colombianos</div>
+        </div>
+        <span class="flag-large">🇨🇴</span>
+      </div>
+    </div>
+
+    <!-- Lista de monedas -->
+    <div class="overflow-auto" style="max-height: 220px;">
+      @for (c of currencies; track c.code) {
+        <div class="currency-row d-flex justify-content-between align-items-center py-2 px-1">
+          <div class="d-flex align-items-center gap-2">
+            <span style="font-size: 1.2rem;">{{ c.flag }}</span>
+            <div>
+              <div class="fw-medium" style="font-size: 0.82rem;">{{ c.code }}</div>
+              <div class="text-secondary" style="font-size: 0.7rem;">{{ c.name }}</div>
+            </div>
+          </div>
+          <div class="text-end">
+            <div class="fw-medium" style="font-size: 0.82rem;">{{ c.rateCOP | number:'1.0-0' }} COP</div>
+            <div class="text-secondary" style="font-size: 0.7rem;">= 1 {{ c.code }}</div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="chart-wrapper d-flex align-items-center justify-content-center">
+      @if (loading) {
+        <div class="spinner-border spinner-border-sm text-primary" role="status"></div>
+      }
+      @if (error && !loading) {
+        <span class="text-danger small">
+          <i class="bi bi-exclamation-triangle me-1"></i>Error al cargar datos
+        </span>
+      }
+    </div>
+  }
+</div>

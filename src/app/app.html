@@ -1,0 +1,116 @@
+<header class="dash-header">
+  <div class="container-fluid px-4">
+    <div class="d-flex align-items-center justify-content-between py-3">
+      <div>
+        <h1 class="h5 fw-bold mb-0 text-white">
+          <i class="bi bi-globe-americas me-2 text-primary"></i>
+          Dashboard Económico Global
+        </h1>
+        <small class="text-secondary">
+          Indicadores económicos · Datos: Banco Mundial &amp; Open Exchange Rates
+        </small>
+      </div>
+      <span class="live-badge">
+        <span class="live-dot"></span>En vivo
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="container-fluid px-4 py-4">
+
+  <!-- Tarjetas KPI -->
+  <div class="row g-3 mb-4">
+    @for (kpi of kpis; track kpi.label) {
+      <div class="col-sm-6 col-xl-3">
+        <app-kpi-card
+          [label]="kpi.label"
+          [value]="kpi.value"
+          [unit]="kpi.unit"
+          [icon]="kpi.icon"
+          [subtitle]="kpi.subtitle"
+          [accent]="kpi.accent"
+          [loading]="kpi.loading"
+          [decimals]="kpi.decimals">
+        </app-kpi-card>
+      </div>
+    }
+  </div>
+
+  <!-- Fila de gráficas -->
+  <div class="row g-3 mb-4">
+    <div class="col-lg-8">
+      <app-gdp-chart></app-gdp-chart>
+    </div>
+    <div class="col-lg-4">
+      <app-exchange-rates></app-exchange-rates>
+    </div>
+  </div>
+
+  <!-- Gráfica de inflación -->
+  <div class="row g-3">
+    <div class="col-12">
+      <app-inflation-chart></app-inflation-chart>
+    </div>
+  </div>
+
+</main>
+
+<footer class="dash-footer">
+  <div class="container-fluid px-4">
+    <div class="row g-4 align-items-center py-4">
+
+      <!-- Columna 1: Autor -->
+      <div class="col-md-4">
+        <div class="d-flex align-items-center gap-3 mb-2">
+          <div class="footer-avatar">
+            <i class="bi bi-person-circle"></i>
+          </div>
+          <div>
+            <div class="fw-semibold text-white" style="font-size: 0.9rem;">Richard Sneider Malagón</div>
+            <div class="text-secondary" style="font-size: 0.72rem;">Desarrollador Fullstack</div>
+          </div>
+        </div>
+        <p class="text-secondary mb-0" style="font-size: 0.72rem; line-height: 1.5;">
+          Especializado en Angular, Node.js y PostgreSQL. Actualmente desarrollando el
+          Sistema de Información Institucional (SII) en U.D.C.A, Bogotá.
+        </p>
+      </div>
+
+      <!-- Columna 2: Tech stack y fuentes -->
+      <div class="col-md-4 text-md-center">
+        <div class="mb-2">
+          <span class="footer-tag">Angular 21</span>
+          <span class="footer-tag">Chart.js</span>
+          <span class="footer-tag">Bootstrap 5</span>
+          <span class="footer-tag">TypeScript</span>
+        </div>
+        <div class="text-secondary" style="font-size: 0.72rem;">
+          Fuentes de datos:
+          <a href="https://data.worldbank.org" target="_blank" rel="noopener">Banco Mundial</a>
+          &amp;
+          <a href="https://open.er-api.com" target="_blank" rel="noopener">Open Exchange Rates</a>
+        </div>
+        <div class="text-secondary mt-1" style="font-size: 0.68rem;">
+          Los datos económicos corresponden al último año disponible reportado.
+        </div>
+      </div>
+
+      <!-- Columna 3: Redes sociales -->
+      <div class="col-md-4 d-flex flex-column align-items-md-end gap-2">
+        <a href="https://www.linkedin.com/in/sneider-malagon/" target="_blank"
+           rel="noopener" class="footer-social-link">
+          <i class="bi bi-linkedin me-2"></i>linkedin.com/in/sneider-malagon
+        </a>
+        <a href="https://github.com/Sneider4" target="_blank"
+           rel="noopener" class="footer-social-link">
+          <i class="bi bi-github me-2"></i>github.com/Sneider4
+        </a>
+        <div class="text-secondary mt-1" style="font-size: 0.68rem;">
+          © {{ currentYear }} · Bogotá, Colombia 🇨🇴
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
